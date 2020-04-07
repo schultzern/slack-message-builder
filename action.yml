@@ -1,0 +1,21 @@
+name: "Slack Message Builder"
+description: Build complex text inputs to slack-action
+inputs:
+  channel:
+    description: 'Channel to post in'
+    required: true
+    default: 'general'
+  text:
+    description: 'Text to be posted in channel'
+    required: true
+    default: 'Hello World!'
+  outputs:
+    json:
+      description: 'JSON formated data to be used with args in slack-action'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.channel }}
+    - ${{ inputs.text }}
+
